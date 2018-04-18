@@ -1,4 +1,4 @@
-class Api::V2::LocationsController < ApplicationController
+class Api::V2::LocationsController < ApiController
   def index
     @locations = Location.all    
   end
