@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_18_015544) do
+ActiveRecord::Schema.define(version: 2018_04_18_022020) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recordings", force: :cascade do |t|
+    t.integer "location_id"
+    t.integer "temp"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_recordings_on_location_id"
   end
 
 end
