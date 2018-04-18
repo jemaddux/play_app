@@ -16,7 +16,6 @@ gem 'draper'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'jquery-rails'
-gem 'devise-bootstrapped'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
