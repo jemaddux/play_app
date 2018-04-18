@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  resources :chatrooms
+  resources :articles
+  
   namespace :api do
     namespace :v1 do
       resources :locations, only: [:index, :show]
@@ -9,6 +14,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :articles
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: "chatrooms#index"
 end
