@@ -1,11 +1,14 @@
 module GenericController
+  # GET /<model>
+  # GET /<model>.json
+  def index
+    # @<model> = <Model>.all
+    instance_variable_set("@#{controller_name}", controller_name.singularize.capitalize.constantize.all)
+  end
+
   # GET /<model>/1
   # GET /<model>/1.json
   def show
-  end
-
-  # GET /<model>/1/edit
-  def edit
   end
 
   # GET /<model>/new
@@ -13,12 +16,9 @@ module GenericController
     # @article = <Model>.new
     instance_variable_set("@#{controller_name.singularize}", controller_name.singularize.capitalize.constantize.new)
   end
-
-  # GET /<model>
-  # GET /<model>.json
-  def index
-    # @<model> = <Model>.all
-    instance_variable_set("@#{controller_name}", controller_name.singularize.capitalize.constantize.all)
+  
+  # GET /<model>/1/edit
+  def edit
   end
 
   # PATCH/PUT /<model>/1
