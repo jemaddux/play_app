@@ -38,6 +38,24 @@ module GenericController
     end
   end
 
+  # POST /<model>
+  # POST /<model>.json
+  def create
+    model_variable = controller_name.singularize.capitalize.constantize.new(controller_params)
+    instance_variable_set("@#{controller_name.singularize}", model_variable)
+    model_name = self.params["controller"].singularize.capitalize
+
+    respond_to do |format|
+      if model_variable.save
+        format.html { redirect_to model_variable, notice: "#{model_name} was successfully created." }
+        format.json { render :show, status: :created, location: model_variable }
+      else
+        format.html { render :new }
+        format.json { render json: model_variable.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 private
   def controller_params
     if self.params && self.params["controller"] 

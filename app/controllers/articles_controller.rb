@@ -3,22 +3,6 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   decorates_assigned :articles, :article
 
-  # POST /articles
-  # POST /articles.json
-  def create
-    @article = Article.new(controller_params)
-
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
-        format.json { render :show, status: :created, location: @article }
-      else
-        format.html { render :new }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
